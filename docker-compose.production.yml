@@ -11,8 +11,9 @@ services:
     env_file: .env
     volumes:
       - pg_data_production:/var/lib/postgresql/data
+    restart: always
   backend:
-    image: ivalexanna/kittygram_backend
+    image: ivalexanna/kittygram_backend:latest
     env_file: .env
     volumes:
       - kittygram_static_volume:/backend_static
@@ -20,7 +21,7 @@ services:
     depends_on:
       - db
   frontend:
-    image: ivalexanna/kittygram_frontend
+    image: ivalexanna/kittygram_frontend:latest
     env_file: .env
     command: cp -r /app/build/. /frontend_static/
     volumes:
@@ -29,7 +30,7 @@ services:
     depends_on:
       - backend
       - frontend
-    image: ivalexanna/kittygram_gateway
+    image: ivalexanna/kittygram_gateway:latest
     env_file: .env
     ports:
       - 9000:80
