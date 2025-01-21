@@ -21,7 +21,7 @@ services:
     depends_on:
       - db
   frontend:
-    image:ivalexanna/kittygram_frontend:
+    image: ivalexanna/kittygram_frontend:latest
     env_file: .env
     command: cp -r /app/build/. /frontend_static/
     volumes:
@@ -30,7 +30,7 @@ services:
     depends_on:
       - backend
       - frontend
-    image:ivalexanna/kittygram_gateway:
+    image: ivalexanna/kittygram_gateway:latest
     env_file: .env
     ports:
       - 9000:80
