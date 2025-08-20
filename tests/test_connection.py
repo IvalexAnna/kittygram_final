@@ -67,7 +67,7 @@ def test_link_connection(
     link = _get_validated_link(deploy_file_info, deploy_info_file_content,
                                link_key)
     response = _make_safe_request(link)
-    cats_project_name = 'Kittygram'
+    cats_project_name = 'CatGram'
     taski_project_name = 'Taski'
     assert_msg_template = (
         f'Убедитесь, что по ссылке `{link}` доступен проект '
@@ -123,7 +123,7 @@ def test_kittygram_static_is_available(
 
     js_link = _get_js_link(response)
     assert js_link, (
-        'Проверьте, что проект `Kittygram` настроен корректно. '
+        'Проверьте, что проект `CatGram` настроен корректно. '
         f'В ответе на запрос к `{link}` не обнаружена ссылка на '
         'JavaScript-файл.'
     )
@@ -147,7 +147,7 @@ def test_kittygram_api_available(
         'password': ''
     }
     assert_msg = (
-        'Убедитесь, что API проекта `Kittygram` доступен по ссылке формата '
+        'Убедитесь, что API проекта `CatGram` доступен по ссылке формата '
         f'`{link}/api/...`.'
     )
     try:

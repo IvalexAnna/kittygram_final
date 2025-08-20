@@ -2,7 +2,7 @@ version: '3'
 
 volumes:
   pg_data_production:
-  kittygram_static_volume:
+  catgram_static_volume:
   media:
 
 services:
@@ -13,27 +13,27 @@ services:
       - pg_data_production:/var/lib/postgresql/data
     restart: always
   backend:
-    image: ivalexanna/kittygram_backend:latest
+    image: ivalexanna/catgram_backend:latest
     env_file: .env
     volumes:
-      - kittygram_static_volume:/backend_static
+      - catgram_static_volume:/backend_static
       - media:/media
     depends_on:
       - db
   frontend:
-    image: ivalexanna/kittygram_frontend:latest
+    image: ivalexanna/catgram_frontend:latest
     env_file: .env
     command: cp -r /app/build/. /frontend_static/
     volumes:
-      - kittygram_static_volume:/frontend_static
+      - catgram_static_volume:/frontend_static
   gateway:
     depends_on:
       - backend
       - frontend
-    image: ivalexanna/kittygram_gateway:latest
+    image: ivalexanna/catgram_gateway:latest
     env_file: .env
     ports:
       - 9000:80
     volumes:
-      - kittygram_static_volume:/staticfiles
+      - catgram_static_volume:/staticfiles
       - media:/media
